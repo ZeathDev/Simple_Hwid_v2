@@ -98,4 +98,18 @@ public class HwidUtils {
         }
     }
 
+    @SuppressWarnings("null")
+    public static void crash3() {
+        try {
+            Thread thread = new Thread(() -> {
+                Object obj = null;
+                obj.toString();
+            });
+
+            thread.start();
+        } catch (Exception e) {
+            crash3();
+        }
+    }
+
 }

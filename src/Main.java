@@ -11,12 +11,13 @@ public class Main {
         System.out.println("Your HWID: " + hwid);
 
         try {
-            SecretKey aesKey = AESUtils.generateKey(); // Random Key
-            aesKey = AESUtils.generateKey("custom"); // Random Key by custom string
+            // SecretKey aesKey = AESUtils.generateKey(); // Random Key
+            // SecretKey aesKey = AESUtils.generateKey("custom"); // Random Key by custom string
+            SecretKey aesKey = AESUtils.generateKeyFromFile(); // If you have key.aes. Please call this!
             byte[] aesHwid = AESUtils.encrypt(hwid, aesKey);
 
             System.out.println("AES:" + new String(aesHwid));
-            System.out.println("DeAES: " + new String(AESUtils.decrypt(aesHwid, aesKey)));
+            System.out.println("DeAES: " + new String(AESUtils.decrypt(aesHwid)));
 
             String atbashHwid = new String(aesHwid);
             String atbashed = AtbashUtils.encrypt(atbashHwid);
@@ -30,6 +31,7 @@ public class Main {
             // !!! CRASH TEST !!!
             // HwidUtils.crash();
             // HwidUtils.crash2(); // faster than HwidUtils.crash()
+            // HwidUtils.crash3(); // An interesting
         } catch (Exception e) {
             e.printStackTrace();
         }

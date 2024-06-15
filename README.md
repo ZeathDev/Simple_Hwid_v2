@@ -2,6 +2,8 @@
 
 一个简单的Java Hwid实现示例
 
+支持AES Key的保存(保存到 aes.key)
+
 ## 算法/编码
 
 AES加密算法 + Base64编码 + Atbash密码
